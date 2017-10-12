@@ -11,6 +11,7 @@
         android:layout_height="wrap_content" />
 
     <EditText
+        android:textAlignment="center"
         android:id="@+id/et_email_send"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"

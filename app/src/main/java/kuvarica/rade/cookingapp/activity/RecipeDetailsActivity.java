@@ -49,6 +49,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                 d.setContentView(R.layout.dialog_sms);
                 Button btnSendSms = d.findViewById(R.id.btn_sms_send);
                 final EditText etSmsNumber = d.findViewById(R.id.et_sms_send_number);
+                d.show();
 
                 btnSendSms.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -75,6 +76,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                 d.setContentView(R.layout.dialog_email);
                 Button btnSendEmail = d.findViewById(R.id.btn_email_send);
                 final EditText etEmail = d.findViewById(R.id.et_email_send);
+                d.show();
 
                 btnSendEmail.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -88,7 +90,10 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                             startActivity(Intent.createChooser(emailIntent, ""));
                             d.cancel();
                         }
-                        Toast.makeText(RecipeDetailsActivity.this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
+                        else {
+                            Toast.makeText(RecipeDetailsActivity.this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
+                        }
+
 
                     }
                 });

@@ -59,19 +59,21 @@ public class DatabaseUtility extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(script, null);
 
-        Recept recept;
-        c.moveToFirst();
-        do {
-            recept = new Recept();
-            recept.setIme(c.getString(0));
-            recept.setSadrzaj(c.getString(1));
-            recipes.add(recept);
-            Log.d("Info", recept.toString());
-        }
-        while (c.moveToNext());
+        Recept recept = null;
+        if (c.moveToFirst())
+        {
+            do {
+                recept = new Recept();
+                recept.setIme(c.getString(0));
+                recept.setSadrzaj(c.getString(1));
+                recipes.add(recept);
+                Log.d("Info", recept.toString());
+            }
+            while (c.moveToNext());
 
-        c.close();
+        }
         return recipes;
+
     }
 
     public void deleteRecipes() {
