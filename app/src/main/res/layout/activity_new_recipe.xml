@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="50dp"
+    tools:context="kuvarica.rade.cookingapp.activity.NewRecipeActivity">
+
+    <TextView
+        android:id="@+id/tv_naslov"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:gravity="center"
+        android:text="Novi Recept"
+        android:textSize="24sp" />
+
+
+    <TextView
+        android:id="@+id/tv_recept_ime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_naslov"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="20dp"
+        android:text="Naziv Recepta: " />
+
+    <EditText
+
+        android:id="@+id/et_recept_ime"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_naslov"
+        android:layout_marginBottom="10dp"
+        android:layout_toRightOf="@id/tv_recept_ime"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/tv_sadrzaj_recepta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_recept_ime"
+        android:layout_marginLeft="20dp"
+        android:text="Sadrzaj Recepta: " />
+
+    <EditText
+        android:id="@+id/et_sadrzaj_recepta"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_alignStart="@id/et_recept_ime"
+        android:layout_below="@id/et_recept_ime"
+        android:layout_toRightOf="@id/tv_sadrzaj_recepta"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/btn_dodaj_recept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:text="Upisi Recept" />
+</RelativeLayout>
