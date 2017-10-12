@@ -61,18 +61,35 @@ public class DatabaseUtility extends SQLiteOpenHelper {
 
         Recept recept;
         c.moveToFirst();
-        while (c.moveToNext()) {
+        do {
             recept = new Recept();
             recept.setIme(c.getString(0));
             recept.setSadrzaj(c.getString(1));
             recipes.add(recept);
             Log.d("Info", recept.toString());
         }
+        while (c.moveToNext());
+
+        c.close();
         return recipes;
     }
 
     public void deleteRecipes() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM " + TABELA_RECEPTI);
+    }
+
+    public Recept getRecipeById(String id) {
+        Recept recept = new Recept();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String script = "SELECT naziv, sadrzaj from " + TABELA_RECEPTI + " where id = " + id + ";";
+        Cursor cursor = db.rawQuery(script, null);
+
+        cursor.moveToFirst();
+        recept.setIme(cursor.getString(0));
+        recept.setSadrzaj(cursor.getString(1));
+        cursor.close();
+        return recept;
+
     }
 }

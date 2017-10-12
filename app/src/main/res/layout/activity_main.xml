@@ -17,6 +17,8 @@
         android:layout_height="wrap_content" />
 
     <ListView
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:id="@+id/lv_content"
         android:layout_below="@+id/tv_recepti"
         android:layout_width="match_parent"

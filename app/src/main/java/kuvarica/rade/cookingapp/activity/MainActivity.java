@@ -45,8 +45,12 @@ public class MainActivity extends AppCompatActivity {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //TODO logika za novi intent - detalje
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Intent intent = new Intent(MainActivity.this, RecipeDetailsActivity.class);
+                intent.putExtra("id", String.valueOf(position + 1));
+                Log.d("Position", String.valueOf(position + 1));
+                startActivity(intent);
+
             }
         });
 
