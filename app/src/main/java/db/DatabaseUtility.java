@@ -16,21 +16,25 @@ import model.Recept;
  */
 
 public class DatabaseUtility extends SQLiteOpenHelper {
+    /*
+    ovo ti je klasa koja obavlja sve operacije vezane za bazu
+    u nastavku cu ti napisati sta koja metoda radi a ti posle obrisi
+     */
 
-    private static final int DATABASE_VERSION = 9;
-    private static final String DATABASE_NAME = "recepti";
-    private static final String TABELA_RECEPTI = "recepti";
+    private static final int DATABASE_VERSION = 9; //ovo ti je samo verzija baze (nebitno)
+    private static final String DATABASE_NAME = "recepti"; //ime baze (nebitno)
+    private static final String TABELA_RECEPTI = "recepti"; //ime jedine tabele koju imas u bazi
 
-    private static final String ID = "id";
-    private static final String NAZIV = "naziv";
-    private static final String SADRZAJ = "sadrzaj";
+    private static final String ID = "id"; //obelezje id u tabeli 'recepti' koje ti sluzi kao primarni kljuc
+    private static final String NAZIV = "naziv"; //obelezje naziv za recept
+    private static final String SADRZAJ = "sadrzaj"; //obelezje sadrzaj za recept
 
     public DatabaseUtility(Context context) {
-        super(context, DATABASE_NAME, null,  DATABASE_VERSION);
+        super(context, DATABASE_NAME, null,  DATABASE_VERSION); //konstruktor za 'kreiranje baze' takoreci
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+    public void onCreate(SQLiteDatabase sqLiteDatabase) { //ova metoda se izvrsava kad se baza pravi, u ovoj metodi se kreira tabela pod nazivom 'recepti' sa svojim obelezjima
         String script = "CREATE TABLE " + TABELA_RECEPTI +
                 "(" + ID + " INTEGER PRIMARY KEY, " +
                 NAZIV + " TEXT, "
@@ -39,12 +43,12 @@ public class DatabaseUtility extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) { //ovo nisam siguran sta radi, ali po nazivu mozes da pretpostavis
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABELA_RECEPTI);
         onCreate(sqLiteDatabase);
     }
 
-    public void addRecipe(Recept recipe) {
+    public void addRecipe(Recept recipe) { //ovo ti je metoda za dodavanje recepta u bazu, znaci kad te pita, ajde pokazi mi gde dodajes recept u bazu, pokazes mu ovo
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(NAZIV, recipe.getIme());
@@ -53,7 +57,7 @@ public class DatabaseUtility extends SQLiteOpenHelper {
         db.close();
     }
 
-    public ArrayList<Recept> getAllRecipes() {
+    public ArrayList<Recept> getAllRecipes() { //ova metoda ti vraca sve recepte iz baze
         ArrayList<Recept> recipes = new ArrayList<>();
         String script = "SELECT naziv, sadrzaj from " + TABELA_RECEPTI + ";";
         SQLiteDatabase db = this.getReadableDatabase();
@@ -76,12 +80,12 @@ public class DatabaseUtility extends SQLiteOpenHelper {
 
     }
 
-    public void deleteRecipes() {
+    public void deleteRecipes() { //ova metoda BRISE sve recepte iz baze
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM " + TABELA_RECEPTI);
     }
 
-    public Recept getRecipeById(String id) {
+    public Recept getRecipeById(String id) { //ova vraca jedan recept za prosledjeni id
         Recept recept = new Recept();
         SQLiteDatabase db = this.getReadableDatabase();
         String script = "SELECT naziv, sadrzaj from " + TABELA_RECEPTI + " where id = " + id + ";";

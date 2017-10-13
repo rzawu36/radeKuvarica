@@ -16,6 +16,9 @@ public class NewRecipeActivity extends AppCompatActivity {
     private EditText etNazivRecepta;
     private EditText etSadrzajRecepta;
     private Button btnDodajRecept;
+    /*
+    ovo ti je activity u kom dodajes novi recept u bazu
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,9 @@ public class NewRecipeActivity extends AppCompatActivity {
         btnDodajRecept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
+                u ovom listeneru se poziva metoda addrecipe kojoj se prosledjuje recept koji se upisuje u bazu
+                 */
                 String ime = etNazivRecepta.getText().toString();
                 String sadrzaj = etSadrzajRecepta.getText().toString();
 

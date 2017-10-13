@@ -23,6 +23,9 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     private FloatingActionButton fabSms;
     private FloatingActionButton fabEmail;
     private Intent intent;
+    /*
+    ovde ces videti 'detalje' za odabrani recept
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,10 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         fabSms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
+                ovde ti je logika za slanje sms-a
+                kad te pita gde ti je to za sms, pokazes mu ovo
+                 */
                 final Dialog d = new Dialog(RecipeDetailsActivity.this);
                 d.setContentView(R.layout.dialog_sms);
                 Button btnSendSms = d.findViewById(R.id.btn_sms_send);
@@ -72,6 +79,10 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         fabEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
+                ovde ti je logika za slanje emaila
+                kad te pita gde ti je to za email, pokazes mu ovo
+                 */
                 final Dialog d = new Dialog(RecipeDetailsActivity.this);
                 d.setContentView(R.layout.dialog_email);
                 Button btnSendEmail = d.findViewById(R.id.btn_email_send);
